@@ -1,0 +1,16 @@
+<VirtualHost *:80>
+
+    ServerName box
+    ServerAlias box
+    ServerAdmin box
+
+    DocumentRoot /usr/local/box/web
+
+    <Directory /usr/local/box/web>
+        Order allow,deny
+        Allow from all
+    </Directory>
+
+    WSGIScriptAlias / /usr/local/box/web/app.py
+
+</VirtualHost>
