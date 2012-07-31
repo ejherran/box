@@ -4,3 +4,5 @@ Requerimientos:
 	-Python 2.7
 	-mod_wsgi
 	-webob
+	
+El archivo "BOX" contiene un ejemplo de configuracion de apache, para ejecutar una aplicacion ICE-BOX con servidor virtual y un solo script frontal, que es la forma de trabajo recomendada.

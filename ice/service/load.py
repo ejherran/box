@@ -1,14 +1,36 @@
-'''
-Created on 31/07/2012
+# -*- coding: utf-8 -*-
 
-@author: zero
-'''
+# Gestor de carga de aplicaciones
 
-from ice.type.integer import Integer
+import urllib2 as url
+from webob import Response
+from src.config.call import caller
 
-class Load:
-    msg = "Hello ICE"
+def callMod(request):
     
-    def getMsg(self):
-        myint = Integer()
-        return self.msg+' - '+myint.whatIs()
+    com = str(request.url);
+    bas = str(request.application_url)
+    cal = com.replace(bas, '')
+    par = cal[1:].split('/')
+    
+    if(par[0] == ''):
+        par = []
+    
+    p = 0
+    while p < len(par):
+        par[p] = url.unquote(str(par[p]).encode('utf8'))
+        p += 1
+    
+    try:
+        while len(par) < 2:
+            par.append('index')
+        
+        caso = caller[par[0]]
+        msg = "Modulo = "+caso['mod']+"<br>"
+        msg += "Acción = "+caso[par[1]]+"<br>"
+        msg += "Parametros = "+str(par[2:])        
+    except:
+        msg = "Acción no encontrada, verifique su petición: <b>"+cal+"</b> !"
+    
+    res = Response(body = msg, content_type = 'text/html')
+    return res
