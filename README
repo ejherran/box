@@ -1,0 +1,6 @@
+Framework ICE Soluciones S.A.S.
+
+Requerimientos:
+	-Python 2.7
+	-mod_wsgi
+	-webob
