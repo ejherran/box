@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-# Gestor de carga de aplicaciones
-
+# Carga de dependencias
 import urllib2 as url
 from webob import Response
 from src.config.call import caller
 
+# Gestor de carga de aplicaciones
 def callMod(request):
     
     com = str(request.url);

@@ -1,5 +1,6 @@
+# -*- coding: utf-8 -*-
 # Archivo de configuracion de llamadas a modulos
+# Formato: caller['modUrl'] = {'mod':'modFile', 'action0':'metodo',...}
 
 caller = {}
-caller['index'] = {'mod':'IndexModule', 'index': 'IndexAction', 'ventas':'VenderAction'}
-caller['casa'] = {'mod':'CasaModule', 'index': 'IndexAction', 'arriendo':'rentarAction'}
+caller['index'] = {'mod':'IndexModule', 'index': 'index'}

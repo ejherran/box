@@ -17,5 +17,4 @@ def application(environ, start_response):
     request = Request(environ)
     response = load.callMod(request)
     
-    
     return response(environ, start_response)

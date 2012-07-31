@@ -1,10 +1,3 @@
-'''
-Created on 31/07/2012
+# -*- coding: utf-8 -*-
 
-@author: zero
-'''
-
-class Integer:
-    
-    def whatIs(self):
-        return 'Esto es un entero'
+# Descriptor de tipos de datos enteros
