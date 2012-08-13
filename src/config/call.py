@@ -1,6 +1,18 @@
 # -*- coding: utf-8 -*-
-# Archivo de configuracion de llamadas a modulos
-# Formato: caller['modUrl'] = {'mod':'modFile', 'action0':'metodo',...}
+# Archivo de configuración de llamadas a modulos
 
-caller = {}
-caller['index'] = {'mod':'IndexModule', 'index': 'index'}
+boxes = {}
+modules = {}
+methods = {} 
+
+# Configuración de boxes
+# boxes {'urlBox':'folderBox'}
+boxes = {'index':'default'}
+
+# configuración de modulos en cada box
+# modules['urlBox'] = {'urlMod':'fileMod'}
+modules['index'] = {'index':'IndexModule'}
+
+# Configuración de metodos por cada modulo
+# methods['urlBox'] = {'urlMod':{'urlMet':'methodName'}}
+methods['index'] = {'index':{'index':'indexAction', 'vender':'venderAction'}}
