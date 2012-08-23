@@ -1,0 +1,1 @@
+ciclos = 64             # Numero de pasadas del sha512

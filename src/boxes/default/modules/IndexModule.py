@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from webob import Response                                                          # Módulo para gestiona respuestas como objetos
+import ice.service.security as sc
 import string
-import random
-import base64
-import hashlib
-import time
+
 
 class IndexModule:
     
@@ -24,19 +22,8 @@ class IndexModule:
         
         self.req.environ['ICE-session'] = "Prueba De Sessión"
         
-        key = str(random.random())+str(time.time())
-        key = base64.b64encode(key)
-        
-        for i in range(64):
-            has = hashlib.sha512()
-            has.update(key)
-            key = has.hexdigest()
-        
-        key = str(key).encode('utf8')
-        key = key.upper()
-        
-        res = key;
-        res = Response(body = res, content_type = 'text/html')
+        key = sc.genKey()
+        res = Response(body = key, content_type = 'text/html')
         res.set_cookie("ice-session", key)
         return res
     
