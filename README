@@ -12,3 +12,4 @@ Control de versiones:
 -0.0.2 => Cambio en la estructura de directorios.
 -0.0.3 => Gestion de URL
 -0.0.4 => Formato utf8
+-0.0.5 => Manejo de sessiones y variables de session con archivos binarios indexados

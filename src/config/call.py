@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-# Archivo de configuración de llamadas a modulos
+
+## - Archivo de configuración de llamadas a modulos - ##
 
 boxes = {}
 modules = {}
@@ -15,4 +16,4 @@ modules['index'] = {'index':'IndexModule'}
 
 # Configuración de metodos por cada modulo
 # methods['urlBox'] = {'urlMod':{'urlMet':'methodName'}}
-methods['index'] = {'index':{'index':'indexAction', 'vender':'venderAction'}}
+methods['index'] = {'index':{'index':'indexAction', 'guardar':'guardarAction', 'leer':'leerAction', 'borrar':'borrarAction'}}

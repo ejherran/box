@@ -1,35 +1,42 @@
 # -*- coding: utf-8 -*-
 
-from webob import Response                                                          # Módulo para gestiona respuestas como objetos
-import ice.service.security as sc
-import string
+# Modulo de entrada de la aplicación
 
+from ice.service.module import Module
 
-class IndexModule:
-    
-    req = None
-    base = ""
+class IndexModule(Module):
     
     def __init__(self, request):
-        self.req = request
-        self.base = "Hola: "
+        Module.__init__(self, request);
     
     def indexAction(self, prm = []):
         msg = []
         for p in prm:
             msg.append(str(p))
-        msg = string.join(msg, ',')
+        msg = self.strMod.join(msg, ',')
         
-        self.req.environ['ICE-session'] = "Prueba De Sessión"
+        self.openSession()
+        self.content = "<h1>Sesion creada con exito</h1>"
         
-        key = sc.genKey()
-        res = Response(body = key, content_type = 'text/html')
-        res.set_cookie("ice-session", key)
-        return res
+        return self.responseHtml()
     
-    def venderAction(self, prm = []):
-        res = "Sus cookies son: "+str(self.req.cookies)
-        return Response(body = res, content_type = 'text/html') 
+    def guardarAction(self, prm = []):
+        self.content = "<b>Guardado:</b> "+prm[0]+' => '+prm[1]
+        self.setVarSession(prm[0], prm[1])
+        return self.responseHtml()
     
-    def multiplica(self, msg):
-        return msg*3
+    def leerAction(self, prm = []):
+        value = self.getVarSession(prm[0])
+        
+        if(value == None):
+            value = 'None'
+            
+        self.content = "<b>Leido: </b>" + prm[0] + " => "+value 
+        return self.responseHtml()  
+    
+    def borrarAction(self, prm = []):
+        if(self.delVarSession(prm[0])):
+            self.content = "<b>Borrado:</b> "+prm[0]
+        else:
+            self.content = "<b>Imposible Borarr: </b> "+prm[0]
+        return self.responseHtml()  

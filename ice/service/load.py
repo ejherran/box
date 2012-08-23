@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 
-# Carga de dependencias
+## - Funciones para la carga dinamica de módulos - ##
+
+# Carga de dependencias genericas
 import urllib2 as url                                                               # Módulo para gestionar las url
 from webob import Response                                                          # Módulo para gestiona respuestas como objetos
+
+# Carga de dependecias internas
 from src.config.call import boxes, modules, methods                                 # Módulo de configuración de rutas del proyecto
 
 # Gestor de carga de aplicaciones
@@ -57,7 +61,7 @@ def loadImport(name):
 # cla: Nombre de la clase a cargar
 # fun: Nombre de la función a caragar
 # req: Variable global que contiene la petición 
-def loadMethod(mod, cla, fun, req):
+def loadMethod(mod, cla, fun, req = None):
     obj = getattr(mod, cla)       
     obj = obj(req)
     
