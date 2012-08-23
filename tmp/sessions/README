@@ -1,0 +1,5 @@
+Directorio para almacenar sesiones.
+
+Este directorio contiene los archivos .BSF para las sesiones de BOX
+Los ficheros de este directorio se leen y escriben automaticamente.
+Se recomienda el uso de permisos 777.
