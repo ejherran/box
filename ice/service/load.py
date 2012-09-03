@@ -39,7 +39,7 @@ def callMod(request):
         res = fun(par[3:])                                                          # Invoca la función cargada, pasando como argumento una porción de la lista de invocación (del cuarto elemento en adelante), el resultado de la funsión queda en [res] que es un objeto Response
         
     except StandardError, e:                                                        # En caso de presentarse algún error
-        res = "Acción no encontrada, verifique su petición: <b>"+str(e)+"</b> !"    # Carga en [res] un mensaje de alerta y la descripccion del error.
+        res = "Error de ejecución, verifique su petición: <b>"+str(e)+"</b> !"      # Carga en [res] un mensaje de alerta y la descripccion del error.
         res = Response(body = res, content_type = 'text/html')                      # Crea un objeto respuesta
         
     return res                                                                      # Retorna el control al frontal de la applicación

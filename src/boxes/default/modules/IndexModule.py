@@ -10,11 +10,6 @@ class IndexModule(Module):
         Module.__init__(self, request);
     
     def indexAction(self, prm = []):
-        msg = []
-        for p in prm:
-            msg.append(str(p))
-        msg = self.strMod.join(msg, ',')
-        
         self.openSession()
         self.content = "<h1>Sesion creada con exito</h1>"
         
@@ -39,4 +34,10 @@ class IndexModule(Module):
             self.content = "<b>Borrado:</b> "+prm[0]
         else:
             self.content = "<b>Imposible Borarr: </b> "+prm[0]
-        return self.responseHtml()  
+        return self.responseHtml()
+    
+    def createTable(self, prm = []):
+        xcon = self.dbMod()
+        xcon.insert('test', {'id':0, 'data':'moto'})
+        self.content = "<b>OK</b>"
+        return self.responseHtml()

@@ -16,4 +16,4 @@ modules['index'] = {'index':'IndexModule'}
 
 # Configuración de metodos por cada modulo
 # methods['urlBox'] = {'urlMod':{'urlMet':'methodName'}}
-methods['index'] = {'index':{'index':'indexAction', 'guardar':'guardarAction', 'leer':'leerAction', 'borrar':'borrarAction'}}
+methods['index'] = {'index':{'index':'indexAction', 'guardar':'guardarAction', 'leer':'leerAction', 'borrar':'borrarAction', 'create':'createTable'}}

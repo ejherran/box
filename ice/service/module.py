@@ -5,14 +5,16 @@
 import string
 from webob import Response                                                          # Módulo para gestiona respuestas como objetos
 from ice.service import security
+from ice.db.db import Db
 
 class Module:
     
     req = None                                                                      # Objeto que contiene la petción
     res = None                                                                      # Objeto que contiene la respuesta
     content = None                                                                  # Variable de contenido de la respuesta
-    strMod = string
-    secMod = security
+    strMod = string                                                                 # Objeto de acceso a los servicios de string
+    secMod = security                                                               # Objeto de acceso a los servicios de seguridad
+    dbMod = Db                                                                      # Objeto de acceso a los servicios de DB
     
     def __init__(self, request):
         self.req = request
@@ -55,7 +57,7 @@ class Module:
             return False
         
     def closeSession(self):
-        session = self.haveSession(); 
+        session = self.getSession(); 
         if(session != None):
             self.secMod.deleteSession(session)
             
